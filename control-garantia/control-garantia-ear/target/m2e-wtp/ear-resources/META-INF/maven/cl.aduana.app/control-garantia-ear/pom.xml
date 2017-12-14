@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent>
+      <artifactId>control-garantia</artifactId>
+      <groupId>cl.aduana.app</groupId>
+      <version>${project.build.globalVersion}</version>
+   </parent>
+
+   <artifactId>control-garantia-ear</artifactId>
+   <packaging>ear</packaging>
+
+   <dependencies>
+      <dependency>
+         <groupId>cl.aduana.app</groupId>
+         <artifactId>control-garantia-web</artifactId>
+         <version>${project.build.globalVersion}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>cl.aduana.app</groupId>
+         <artifactId>control-garantia-ejb</artifactId>
+         <version>${project.build.globalVersion}</version>
+         <type>ejb</type>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <finalName>control-garantia-ear-${project.build.globalVersion}</finalName>
+
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-ear-plugin</artifactId>
+            <configuration>
+            <modules>
+              <ejbModule>
+                <groupId>cl.aduana.app</groupId>
+                <artifactId>control-garantia-ejb</artifactId>                   
+              </ejbModule>              
+              <webModule>
+                <groupId>cl.aduana.app</groupId>
+                <artifactId>control-garantia-web</artifactId>
+                <contextRoot>/control-garantia</contextRoot>
+              </webModule>            
+            </modules>            
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+</project>

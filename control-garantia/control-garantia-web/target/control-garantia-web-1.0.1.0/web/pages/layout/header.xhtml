@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body id="asd">
+	<ui:composition>
+		<f:loadBundle basename="cl.aduana.web.properties.initPage"
+			var="headerTitle" />
+		<div class="headerStyle">
+			<table cellspacing="10px" width="100%"
+				style="margin: 0 auto; vertical-align: top">
+				<tr>
+					<td valign="middle" id="logoLeft"
+						style="float: left; vertical-align: top">
+						<p:graphicImage
+							id="logo-aduana" library="imagenes" name="LogoAduana3.png" alt=""
+							width="60" height="72" />
+<!-- 				<img  src="#{request.contextPath}/resources/imagenes/LogoAduana3.png" alt=""/>  -->
+					</td>
+					<td valign="middle" id="nameProject"
+						style="text-align: center; color: black; vertical-align: middle;">
+						<center>
+							<h1>
+								<h:outputText value="#{headerTitle['header.appname']}"
+									style="font-family:arial; text-align: center; color: white; " />
+							</h1>
+						</center>
+					</td>
+					<td valign="middle" id="logoRight"
+						style="float: right; vertical-align: top">
+						<p:graphicImage
+							id="logo-gbo-chile" library="imagenes" name="LogoGobierno.png"
+							alt="" width="74" height="71" />
+<!-- 				<img  src="#{request.contextPath}/resources/imagenes/LogoGobierno.png" alt=""/> -->
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- 			<div class="ui-g-12"> -->
+		<!-- 				<center> -->
+		<!-- 					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" style="width:60%" /> -->
+		<!-- 				</center> -->
+		<!-- 			</div> -->
+	</ui:composition>
+</h:body>
+</html>

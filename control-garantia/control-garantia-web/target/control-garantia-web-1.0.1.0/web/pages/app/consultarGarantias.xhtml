@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+	<f:event type="preRenderView"
+		listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+</h:head>
+<h:body>
+
+	<ui:composition template="/web/pages/layout/principalLayout.xhtml">
+		<ui:define name="principalcontent">
+			<h:form>
+				<div class="ui-g-12" style="padding: 0px;">
+					<div align="center">
+						<p:panel id="panel" header="Consulta de Garantias">
+							<h:panelGrid columns="10" id="panelOperador">
+								<p:outputLabel value="Id Garantia" for="idGarantia"/>
+								<p:inputText id="idGarantia">
+									<p:watermark for="idGarantia" value="11111111" id="watermarkIdGarantia" />
+								</p:inputText>
+								<p:outputLabel value="Rut Operador" for="rutOperador"/>
+								<p:inputText id="rutOperador"  >
+									<p:watermark for="rutOperador" value="11111111" id="watermarkRutUsuario" />
+								</p:inputText>
+								<p:outputLabel value="-"/>
+								<p:inputText id="inputDvRut" styleClass="inputTextDvRut" maxlength="1">
+									<p:watermark for="inputDvRut" value="1" id="watermarkDvRut" />
+								</p:inputText>
+								<p:outputLabel value="Nombre Operador"/>
+								<p:inputText id="nombreOperador"  size="40">
+									<p:watermark for="nombreOperador" value="AAAAAA" id="watermarkNombreOperador" />
+								</p:inputText>
+								<p:outputLabel value="Estado Operador"/>
+								<p:inputText id="inputEstadoOperador" >
+									<p:watermark for="inputEstadoOperador" value="Habilitado" id="watermarkEstadoOperador" />
+								</p:inputText>
+							</h:panelGrid>
+							<p:spacer width="10" height="30" />
+							<p:commandButton value="Consultar"/>
+						</p:panel>
+						<p:panel id="panelTable">
+							<p:dataTable paginator="true" var="row" value="#{personCtrl.rows}" styleClass="dataTable" tableStyle="width:auto" paginatorPosition="bottom" rows="10" emptyMessage="">
+								<p:column>
+									<f:facet name="header">
+										<p:outputLabel value="Id Garantia" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Nro. Garantia" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Tipo Usuario" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Tipo Documento" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Monto Garantizado" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Monto Disponible" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Fecha Emision" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">
+										<h:outputText value="#{row.id}" />	
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Fecha Expiracion" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Estado Garantia" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Rut Operador" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Nombre Operador" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<h:outputText value="#{row.id}" />
+									</div>
+								</p:column>
+								<p:column >
+									<f:facet name="header">
+										<p:outputLabel value="Acciones" styleClass="outputLabel"/>
+									</f:facet>
+									<div align="center">	
+										<p:commandButton icon="fa fa-pencil-square-o" title="Modificar Garantia" action="#{menuCtrl.goPage('/principal/modificarGarantias')}"/>
+										<p:commandButton icon="fa fa-search" title="Visualizar Garantia" action="#{menuCtrl.goPage('/principal/visualizarGarantias')}"/>
+									</div>
+								</p:column>
+							</p:dataTable>
+							<p:spacer width="10" height="30" />
+							<p:commandButton value="Cancelar" action="#{menuCtrl.goPage('/principal')}"/>
+						</p:panel>
+					</div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

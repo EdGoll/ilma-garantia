@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+                      
+	<url-mapping id="auditoria">
+		<pattern value="/principal/auditoria" />
+		<view-id value="/web/pages/app/auditoria.jsf" />
+	</url-mapping> 
+	
+	<url-mapping id="principal">
+		<pattern value="/principal" />
+		<view-id value="/web/pages/app/index-principal.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="consultar">
+		<pattern value="/principal/consultar/#{pid}" />
+		<view-id value="/web/pages/app/consultar.jsf" />
+	</url-mapping>	
+
+	<url-mapping id="personas">
+		<pattern value="/principal/personas" />
+		<view-id value="/web/pages/app/personas.jsf" />
+	</url-mapping>	
+	
+	<url-mapping id="consultaGarantias">
+		<pattern value="/principal/consultaGarantias" />
+		<view-id value="/web/pages/app/consultarGarantias.jsf" />
+	</url-mapping>	
+
+	<url-mapping id="init">
+		<pattern value="/" />
+		<view-id value="/web/pages/public/loginExt.jsf" />
+	</url-mapping>	
+	
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/web/pages/public/login.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="logout">
+		<pattern value="/logout" />
+		<view-id value="/web/pages/app/logout.jsf" />
+	</url-mapping>	
+	
+	<url-mapping id="int">
+		<pattern value="/int" />
+		<view-id value="/web/pages/public/login.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="ext">
+		<pattern value="/ext" />
+		<view-id value="/web/pages/public/login.jsf" />
+	</url-mapping>	
+	 
+	<url-mapping id="sesionexpirada">
+		<pattern value="/sesionExpirada" />
+		<view-id value="/web/pages/public/accessDenied.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="auth-error-int">
+		<pattern value="/int/#{error}" />
+		<view-id value="/web/pages/public/login.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="auth-error-ext">
+		<pattern value="/#{error}" />
+		<view-id value="/web/pages/public/loginExt.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="exception">
+		<pattern value="/principal/exception" />
+		<view-id value="/web/pages/app/exception.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="viewexpired">
+		<pattern value="/viewexpired" />
+		<view-id value="/error/viewExpired.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="funcionarios">
+		<pattern value="/principal/funcionarios" />
+		<view-id value="/web/pages/app/funcionarios.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="funcionariosForm">
+		<pattern value="/principal/funcionarios/form" />
+		<view-id value="/web/pages/app/funcionariosForm.jsf" />
+	</url-mapping>	
+	
+	<url-mapping id="ingresoGarantias">
+		<pattern value="/principal/garantias/form" />
+		<view-id value="/web/pages/app/ingresoGarantias.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="modificarGarantias">
+		<pattern value="/principal/modificarGarantias" />
+		<view-id value="/web/pages/app/modificarGarantias.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="visualizarGarantias">
+		<pattern value="/principal/garantias" />
+		<view-id value="/web/pages/app/visualizarGarantias.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="garantiasCustodia">
+		<pattern value="/principal/garantiasCustodia" />
+		<view-id value="/web/pages/app/garantiasCustodia.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="ingresarCustodia">
+		<pattern value="/principal/ingresarCustodia" />
+		<view-id value="/web/pages/app/ingresarCustodia.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="editarCustodia">
+		<pattern value="/principal/editarCustodia" />
+		<view-id value="/web/pages/app/editarCustodia.jsf" />
+	</url-mapping>
+		
+</pretty-config>

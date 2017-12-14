@@ -1,0 +1,168 @@
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 90%;
+}
+body {
+	margin:0;
+	padding:0;
+	border:0;			/* This removes the border around the viewport in old versions of IE */
+	width:100%;
+	background:#fff;
+	min-width:600px;    	/* Minimum width of layout - remove line if not required */
+					/* The min-width property does not work in old versions of Internet Explorer */
+	font-size:90%;
+}
+#page{
+	width: 100%;
+	margin: 0 auto;
+}
+
+#left{
+	width: 100%;
+	height:100%	;	
+	margin-bottom:16px;
+	
+}
+
+#header{
+	width: 100%;
+	height:100%;
+	
+	margin-bottom:16px;
+}
+.headerStyle{		
+	width: 100%;
+	text-align: center;
+	background-color:#0047AB;
+	text-color: white;	
+
+}
+
+#content{
+	width: 100%;
+	height:400px
+	margin-right:16px;
+	margin-bottom:36px;
+	
+}
+
+#principalcontent{
+	width: 100%;
+	height:100%
+	margin-right:16px;
+	margin-bottom:36px;
+	
+}
+
+#footer{
+	width: 100%;
+	height:100px;
+	
+}
+
+
+/* column container */
+.colmask {
+	position:relative;	/* This fixes the IE7 overflow hidden bug */
+	clear:both;
+	float:left;
+	width:100%;			/* width of whole page */
+	overflow:hidden;		/* This chops off any overhanging divs */
+}
+/* common column settings */
+.colright,
+.colmid,
+.colleft {
+	float:left;
+	width:100%;
+	position:relative;
+}
+.col1,
+.col2,
+.col3 {
+	float:left;
+	position:relative;
+	padding:0 0 1em 0;
+	overflow:hidden;
+		width:100%;
+	height:100% 
+}
+/* 2 Column (left menu) settings */
+.leftmenu {
+	background:#fff;		/* right column background colour */
+		width:114%;
+	height:100% 
+}
+.leftmenu .colleft {
+	right:77%;			/* right column width */
+	width:100%;
+	height:100% 
+	/*background:#f4f4f4;*/	/* left column background colour */
+}
+.leftmenu .col1 {
+	width:71%;			/* right column content width */
+	left:93%;			/* 100% plus left column left padding */
+}
+.leftmenu .col2 {
+	width:14%;			/* left column content width (column width minus left and right padding) */
+	left:7%;			/* (right column left and right padding) plus (left column left padding) */
+}
+/* Footer styles */
+#footer {
+	clear:both;
+	float:left;
+	width:100%;
+	/*border-top:1px solid #000;*/
+}
+#footer p {
+	padding:10px;
+	margin:0;
+}
+
+
+}
+
+.columnAlignTop{
+	vertical-align: top;
+	horizontal-align: left; 
+	text-align: left;
+	height: auto;
+	width: auto;
+	padding: 7px;
+	margin: 0px;
+}
+
+.rowAlignMiddle{
+	vertical-align: middle;
+	horizontal-align: middle; 
+	text-align: left;
+	height: auto;
+	width: auto;
+	padding: 7px;
+	margin: 0px;
+}
+
+
+
+.columnAlignMiddle{
+	vertical-align: middle;
+	horizontal-align: left; 
+	text-align: left;
+	height: auto;
+	width: auto;
+	padding: 7px;
+	margin: 0px;
+}
+
+.inputTextDvRut.ui-inputtext{
+	font-size: 12px;
+	width: 12px;	
+	height: 12px;
+}
+
+.dataTable.ui-datatable{
+	font-size: 12px;
+}
+
+.outputLabel.ui-outputlabel{
+	font-size: 12px;
+}

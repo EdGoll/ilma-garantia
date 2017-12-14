@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+<h:body onload='document.f.j_username.focus();'>
+	<ui:composition template="/web/pages/layout/commonLayout.xhtml">
+		<ui:define name="content">
+
+			<center>			 	
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" style="width:60%"/>
+				<c:if test="#{loginBean.loginMessage}"></c:if>				
+			</center>
+
+			<form name='f' action="#{loginBean.authPage}" method="post">
+				<input type="hidden" name="#{loginBean.defaultRequestParam}" value="#{loginBean.intAuthUserType}" />
+				<center>
+
+					<div style="width: 26%; text-align: left; height: 150px;">
+						<p:panel header="#{false?'Acceso Usuario Interno':'Acceso'}">
+							<h:panelGrid columns="1" width="90%">
+								<table width="100%">
+
+									<tr>
+										<td>Usuario:</td>
+										<td><input id="j_username" 
+													type="text"
+													name="j_username" 
+													value="" 
+													style="width:100%" 
+													tabindex="1" 
+													aria-required="true" 
+													class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" 
+													role="textbox" 
+													aria-disabled="false" 
+													aria-readonly="false" /></td>
+									</tr>
+
+									<tr>
+										<td>Contrase&ntilde;a:</td>
+										<td><input id="j_password" 
+													type="password" 
+													name="j_password" 
+													style="width:100%" 
+													tabindex="2" 
+													aria-required="true" 
+													class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" 
+													role="textbox" 
+													aria-disabled="false" 
+													aria-readonly="false" /></td>
+									</tr>
+
+								</table>
+								
+								<table width="100%" style="margin-top: 10px;">
+									<tr>
+										<td align="right">
+											<button name="entrar" 
+													type="submit" 
+													class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-priority-primary" 
+													role="button" 
+													style="white-space: nowrap;" 
+													aria-disabled="false">
+												<span class="ui-button-text ui-c">Iniciar sesi&oacute;n</span>
+											</button>
+										</td>
+										<td>
+											<button name="limpiar" 
+													type="reset" 
+													class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-priority-primary" 
+													role="button" 
+													aria-disabled="false">
+												<span class="ui-button-text ui-c">Limpiar</span>
+											</button>
+										</td>
+									</tr>
+								</table>
+															
+							</h:panelGrid>
+							
+							<ui:remove>
+							<!-- TODO: boton switch usuario Interno/Externo -->
+							<f:facet name="actions">
+								<h:form>
+									<h:outputLink id="switchlogin" styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" 
+												 onclick="location.href='ext';" rendered="false" >
+										<h:outputText styleClass="ui-icon ui-icon-transfer-e-w"/>
+									</h:outputLink>
+									<p:tooltip id="toolTipFade" for="switchlogin" value="Cambiar a Acceso Usuario Externo" position="right" rendered="false" />
+								</h:form>
+							</f:facet>
+							</ui:remove>
+							
+						</p:panel>
+					</div>
+				</center>
+			</form>
+
+			<script type="text/javascript">
+			window.onload = function() {
+				document.getElementById("j_username").focus();
+			};
+			</script>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

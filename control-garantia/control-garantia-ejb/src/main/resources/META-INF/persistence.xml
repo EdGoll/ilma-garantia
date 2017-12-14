@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- DS H2 Esquema en memoria para  POC Person -->
+	<persistence-unit name="sampleLocalDb" transaction-type="JTA" >
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+		<class>cl.aduana.gar.negocio.base.auditoria.Auditoria</class>		
+		<class>cl.aduana.gar.negocio.modelo.entidades.Person</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.TrazabilidadServicios</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.GloTrazaNotificacion</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.Funcionario</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+<!-- 			<property name="hibernate.show_sql" value="true" /> -->
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		</properties>
+	</persistence-unit>
+	
+	<!-- DS H2 Esquema en memoria para  auditoria -->
+	<persistence-unit name="auditLocalDb" transaction-type="JTA" >
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/ExampleDSAud</jta-data-source>
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.show_sql" value="true" />
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		</properties>
+	</persistence-unit>	
+	
+	
+    <!-- DS Esquema Core GARANTIA -->
+	<persistence-unit name="garantiaPU" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/garantiaDS</jta-data-source>
+		<class>cl.aduana.gar.negocio.modelo.entidades.Garantia</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.CtaCte</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.Custodia</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.DinMoned</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.EstadoCustodia</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.EstadoGarantia</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.Garantia</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.Operacion</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.SiroteTipoOperador</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.TipoDocGarantia</class>
+		<class>cl.aduana.gar.negocio.modelo.entidades.Aseguradora</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" /> -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit> 	
+
+ 	<!-- DS Esquema Core GLOBAL --> 
+<!-- 	<persistence-unit name="aduanaJTAPersistenceUnitOracle11gRemote" transaction-type="JTA"> -->
+<!-- 		<provider>org.hibernate.ejb.HibernatePersistence</provider>					 -->
+<!-- 		<jta-data-source>java:jboss/datasources/POraGLOBAL</jta-data-source> -->
+<!-- 		<class>cl.aduana.gar.model.entities.TrazabilidadServicios</class> -->
+<!-- 		<class>cl.aduana.gar.model.entities.GloTrazaNotificacion</class> -->
+<!-- 		<exclude-unlisted-classes>true</exclude-unlisted-classes> -->
+<!-- 		<properties> -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" /> -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="validate" /> -->
+<!--  			<property name="hibernate.show_sql" value="true"/>  				 --> 
+<!-- 		</properties> -->
+<!-- 	</persistence-unit>  --> 
+		
+</persistence>   
+

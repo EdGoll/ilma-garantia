@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+	<f:event type="preRenderView"
+		listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+</h:head>
+<h:body>
+
+	<ui:composition template="/web/pages/layout/principalLayout.xhtml">
+
+		<ui:define name="principalcontent">
+
+			<p:panel header="Formulario">
+			
+			<h:form>
+				<div class="ui-g-12" style="padding: 0px;">
+					<div align="center">
+						<p:panel id="panel" header="Ingreso de Garantia">
+							<h:panelGrid columns="10" id="panelOperador">
+								<p:outputLabel value="Rut Operador" for="rutOperador"/>
+								<p:inputText id="rutOperador"  >
+									<p:watermark for="rutOperador" value="11111111" id="watermarkRutUsuario" />
+								</p:inputText>
+								<p:outputLabel value="-"/>
+								<p:inputText id="inputDvRut" styleClass="inputTextDvRut" maxlength="1">
+									<p:watermark for="inputDvRut" value="1" id="watermarkDvRut" />
+								</p:inputText>
+								<p:outputLabel value="Tipo Operador" for="SelectTipoOperador"/>
+								<p:selectOneMenu id="SelectTipoOperador" styleClass="selectOneMenu">
+									<f:selectItem itemLabel="Seleccione Tipo de Operador" noSelectionOption="" />
+<!-- 			            			<f:selectItems value="#{tipoDocumentoCtrl.tipoDocumentos}" var="row" itemValue="#{row.id}" itemLabel="#{row.descripcion}"/> -->
+								</p:selectOneMenu>
+								<p:outputLabel value="Nombre Operador"/>
+								<p:inputText id="nombreOperador"  size="40">
+									<p:watermark for="nombreOperador" value="AAAAAA" id="watermarkNombreOperador" />
+								</p:inputText>
+								<p:outputLabel value="Correo Electrónico"/>
+								<p:inputText id="correoElectronico"  size="40">
+									<p:watermark for="correoElectronico" value="example@aduana.cl" id="watermarkCorreoElectronico" />
+								</p:inputText>
+							</h:panelGrid>
+							<p:spacer width="10" height="30" />
+							<h:panelGrid columns="8" id="panelDocumentoGarantia">
+								<p:outputLabel value="Tipo Documento" styleClass="outputLabel"/> 
+								<p:selectOneMenu id="SelectTipoDocumento" styleClass="selectOneMenu">
+									<f:selectItem itemLabel="Seleccione Tipo Documento" noSelectionOption="" />
+<!-- 			            			<f:selectItems value="#{tipoDocumentoCtrl.tipoDocumentos}" var="row" itemValue="#{row.id}" itemLabel="#{row.descripcion}"/> -->
+								</p:selectOneMenu>
+								<p:outputLabel value="Numero Garantia"/>
+								<p:inputText id="inputNumeroGarantia" >
+									<p:watermark for="inputNumeroGarantia" value="123456789" id="watermarkNumeroGarantia" />
+								</p:inputText>
+								<p:outputLabel value="Monto Total Garantia"/>
+								<p:inputText id="inputMontoTotalGarantia" >
+									<p:watermark for="inputMontoTotalGarantia" value="$1000" id="watermarkMontoTotalGarantia" />
+								</p:inputText>
+								<p:outputLabel value="Moneda Garantia"/>
+								<p:inputText id="inputMonedaGarantia" >
+									<p:watermark for="inputMonedaGarantia" value="Pesos" id="watermarkMonedaGarantia" />
+								</p:inputText>
+								<p:outputLabel value="Fecha Emision"/>
+								<p:calendar id="calendarFechaEmision" showOn="button" styleClass="calendar"  pattern="dd/MM/yyyy"
+									converterMessage="No se reconoce como un formato de fecha">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+									<p:watermark for="calendarFechaEmision" value="12/12/2017" id="watermarkCalendarFechaEmision" />
+								</p:calendar>
+								<p:outputLabel value="Fecha Expiracion"/>
+								<p:calendar id="calendarFechaExpiracion" showOn="button" styleClass="calendar"  pattern="dd/MM/yyyy"
+									converterMessage="No se reconoce como un formato de fecha">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+									<p:watermark for="calendarFechaExpiracion" value="12/12/2017" id="watermarkCalendarFechaExpiracion" />
+								</p:calendar>
+								<p:outputLabel value="Fecha Inicio Contrato"/>
+								<p:calendar id="calendarFechaInicioContrato" showOn="button" styleClass="calendar"  pattern="dd/MM/yyyy"
+									converterMessage="No se reconoce como un formato de fecha">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+									<p:watermark for="calendarFechaInicioContrato" value="12/12/2017" id="watermarkCalendarFechaInicioContrato" />
+								</p:calendar>
+								<p:outputLabel value="Fecha Termino Contrato"/>
+								<p:calendar id="calendarFechaTerminoContrato" showOn="button" styleClass="calendar"  pattern="dd/MM/yyyy"
+									converterMessage="No se reconoce como un formato de fecha">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+									<p:watermark for="calendarFechaTerminoContrato " value="12/12/2017" id="watermarkCalendarFechaTerminoContrato" />
+								</p:calendar>
+								<p:outputLabel value="Fecha Habilitacion Recinto"/>
+								<p:calendar id="calendarFechaHabilitacionRecinto" showOn="button" styleClass="calendar"  pattern="dd/MM/yyyy"
+									converterMessage="No se reconoce como un formato de fecha">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+									<p:watermark for="calendarFechaHabilitacionRecinto" value="12/12/2017" id="watermarkCalendarFechaHabilitacionRecinto" />
+								</p:calendar>
+								<p:outputLabel value="Entidad Aseguradora"/>
+								<p:inputText id="inputEntidadAseguradora" >
+									<p:watermark for="inputEntidadAseguradora" value="Pesos" id="watermarkEntidadAseguradora" />
+								</p:inputText>
+								<p:outputLabel value="Monto Promedio"/>
+								<p:inputText id="inputMontoPromedio" >
+									<p:watermark for="inputMontoPromedio" value="$1000" id="watermarkMontoPromedio" />
+								</p:inputText>
+								<p:outputLabel value="Estado Operador"/>
+								<p:inputText id="inputEstadoOperador" >
+									<p:watermark for="inputEstadoOperador" value="Vencido" id="watermarkEstadoOperador" />
+								</p:inputText>
+							</h:panelGrid>
+							<p:spacer width="10" height="30" />
+							<p:commandButton value="Registrar Garantia"/>
+							<p:commandButton value="Cancelar" action="#{funcionarioCtrl.cancelarOperacionCrudInForm}"/>
+						</p:panel>
+					</div>
+				</div>
+			</h:form>
+			
+			</p:panel>
+			
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

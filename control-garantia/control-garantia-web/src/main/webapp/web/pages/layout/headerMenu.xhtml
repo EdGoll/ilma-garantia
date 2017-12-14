@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+	<f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+	<link rel="shortcut icon" href="#{request.contextPath}/resources/imagenes/favicon.ico" type="image/x-icon" />
+  	<link rel="icon" href="#{request.contextPath}/resources/imagenes/favicon.ico" type="image/x-icon" />
+</h:head>
+<body>
+	<ui:composition>
+		<div class="ui-g">
+			<div class="ui-g-12" style="padding: 0px;">
+				<h:form>
+					<p:menubar>
+					<p:menuitem value="Inicio"	  action="#{menuCtrl.goInicio}" icon="fa fa-fw fa-th" ajax="true"/>
+						<p:submenu label="Menu" expanded="true">						
+							<p:menuitem value="Consulta de Garantias" action="#{menuCtrl.goPage('/principal/consultaGarantias')}" ajax="true"/>
+							<p:menuitem value="Consulta de Garantias en Custodia" action="#{menuCtrl.goPage('/principal/garantias')}" ajax="true"/>
+							<p:menuitem value="Ingresar de Garantias" action="#{menuCtrl.goPage('/principal/garantias/form')}" ajax="true"/>
+						</p:submenu>
+						
+						<f:facet name="options">
+							<p:outputLabel value="Login" styleClass="outputLabelBienvenido" />
+							<p:spacer width="10" height="10" />
+							<p:outputLabel id="nombreUsuario" styleClass="outputLabel" value="PC/ADM"/>
+							<p:spacer width="10" height="10" />
+							<p:tooltip id="toolTipNombreUsuario" for="nombreUsuario" position="bottom">
+								<h:panelGrid columns="2">
+									<p:outputLabel value="Usuario:" />
+									<p:outputLabel value="Paola Calderon" />
+									<p:outputLabel value="Perfil:" />
+									<p:outputLabel value="ADMINISTRADOR" />
+								</h:panelGrid>
+							</p:tooltip>
+							<p:spacer width="10" height="10" />
+							<p:commandButton value="Cerrar Sesi&oacute;n" icon="ui-icon-extlink" 
+								style="align:right" action="#{loginBean.actionSalir}" partialSubmit="true" immediate="true" ajax="false" />
+							
+						</f:facet>
+					</p:menubar>
+
+				</h:form>
+			</div>
+			<div class="ui-g-12">
+				<center>
+					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" style="width:60%" />
+				</center>
+			</div>
+		</div>
+	</ui:composition>
+</body>
+</html>

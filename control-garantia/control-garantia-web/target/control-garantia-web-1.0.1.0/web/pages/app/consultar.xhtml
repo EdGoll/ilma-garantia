@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+	<h:head>
+<f:metadata>
+	<f:viewParam id="pid" name="pid" value="#{gloTrazaNotificacionConsultar.pid}" />
+	<f:event type="preRenderView" listener="#{gloTrazaNotificacionConsultar.onload}" />
+</f:metadata>	
+</h:head>
+<h:body>
+
+
+
+	<ui:composition template="/web/pages/layout/principalLayout.xhtml">
+
+		<ui:define name="principalcontent">
+
+		<h:panelGroup>
+			<p:panel header="Objeto Consultado GET desde URLGET">
+				<h:outputText value="#{gloTrazaNotificacionConsultar.pid}" />
+			</p:panel>
+
+			<p:panel header="Objeto Consultado  desde DB por ir URLGET">
+				<h:outputText
+					value="#{gloTrazaNotificacionConsultar.gloTrazaNotificacionSelectedDb.id} " />
+				<h:outputText
+					value="#{gloTrazaNotificacionConsultar.gloTrazaNotificacionSelectedDb.servicio} " />
+			</p:panel>
+
+			<p:panel header="Objeto Consultado  desde Session">
+				<h:outputText
+					value="#{gloTrazaNotificacionConsultar.gloTrazaNotificacionFromSession.id} " />
+				<h:outputText
+					value="#{gloTrazaNotificacionConsultar.gloTrazaNotificacionFromSession.servicio} " />
+			</p:panel>
+			<h:form>
+				<p:commandButton value="Volver"
+					action="#{gloTrazaNotificacionConsultar.volver}" />
+			</h:form>
+			</h:panelGroup>
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+
+</html>

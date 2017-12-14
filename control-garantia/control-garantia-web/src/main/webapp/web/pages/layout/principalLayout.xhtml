@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<h:outputStylesheet name="common-style.css" library="css" />
+		<link rel="shortcut icon" href="#{request.contextPath}/resources/imagenes/favicon.ico" type="image/x-icon" />
+  		<link rel="icon" href="#{request.contextPath}/resources/imagenes/favicon.ico" type="image/x-icon" />
+	</h:head>
+
+<h:body>
+
+	<div id="principal">
+	
+		<div class="ui-g" style="padding: 0px;">
+			<div id="header">
+			
+				<ui:insert name="header">
+					<div class="ui-g-12" style="padding: 0px;">
+						<ui:include src="/web/pages/layout/header.xhtml" />
+					</div>					
+					<div class="ui-g-12">
+						<ui:include src="/web/pages/layout/headerMenu.xhtml" />
+					</div>
+				</ui:insert>
+			</div>
+			
+		</div>
+
+		<div class="ui-g">
+
+<!-- 			<div class="ui-g-2 " style="vertical-align: top;"> -->
+<!-- 				<ui:insert name="left"> -->
+<!-- 					<ui:include src="/web/pages/layout/leftMenu.xhtml" /> -->
+<!-- 				</ui:insert> -->
+<!-- 			</div> -->
+
+			<div class="ui-g-12 " style="vertical-align: top;">
+				<ui:insert name="principalcontent">
+					<ui:include src="/web/pages/layout/commonContent.xhtml" />
+				</ui:insert>
+			</div>
+		
+
+		</div>
+
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/web/pages/layout/footer.xhtml" />
+			</ui:insert>
+		</div>
+
+	</div>
+
+</h:body>
+
+</html>

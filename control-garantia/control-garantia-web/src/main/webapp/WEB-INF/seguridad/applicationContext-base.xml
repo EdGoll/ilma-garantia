@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+<!-- COMPONENTE DE SEGURIDAD:  Archivo de configuración Base, ne la mayoria de los casos no es necesario modificar -->
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref='jaasAuthProviderInternal' />
+	</sec:authentication-manager>
+
+	<bean id="customFormLoginFilter" class="cl.aduana.seguridad.jaas.MyAuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureHandler" ref="failureHandler" />
+		<property name="authenticationSuccessHandler" ref="successHandler" />
+		<property name="authenticationDetailsSource" ref="customWebAuthenticationDetails" />
+	</bean>
+
+	<bean id="customWebAuthenticationDetails" class="cl.aduana.seguridad.springsecurity.providers.CustomWebAuthenticationDetails" >
+		<property name="customInitSecutityConfig">
+			<bean id="secutityConfigAuth" class="cl.aduana.seguridad.springsecurity.CustomInitSecutityConfig" />
+		</property>	
+	</bean>
+	
+	<bean id="configCustomLogin" class="cl.aduana.seguridad.springsecurity.ConfigCustomLogin" >
+		<constructor-arg index="0"  ref="initConfig"/>
+	</bean>
+	
+	<bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<property name="defaultTargetUrl" value="/principal" />
+		<property name="alwaysUseDefaultTargetUrl" value="true" />
+	</bean>
+
+	<bean id="loginUrlAuthenticationEntryPoint" class="cl.aduana.seguridad.springsecurity.handlers.CustomLoginUrlAuthenticationEntryPoint">
+		<property name="usrLoginIntUrl" value="/int" />
+		<property name="usrLoginExtUrl" value="/ext" />
+		<property name="usrLoginDefaulUrl" value="/sesionExpirada" />
+		<property name="customInitSecutityConfig">
+			<bean id="secutityConfigEntryPoint" class="cl.aduana.seguridad.springsecurity.CustomInitSecutityConfig" />
+		</property>			
+	</bean>
+	
+	<bean id="customUrlLogoutSuccessHandler" class="cl.aduana.seguridad.springsecurity.handlers.CustomUrlLogoutSuccessHandler">
+		<property name="usrLogoutIntUrl" value="/int" />
+		<property name="usrLogoutExtUrl" value="/ext" />
+		<property name="usrLogoutDefaulUrl" value="/sesionExpirada" />
+		<property name="customInitSecutityConfig">
+			<bean id="secutityConfigLogoutSuccessHandler" class="cl.aduana.seguridad.springsecurity.CustomInitSecutityConfig" />
+		</property>	
+	</bean>
+
+	<bean id="failureHandler" class="cl.aduana.seguridad.springsecurity.handlers.CustomUrlAuthenticationFailureHandler">
+		<property name="usrAuthFailIntUrl" value="/int/error=true" />
+		<property name="usrAuthFailExtUrl" value="/error=true" />
+		<property name="usrAuthFailDefaulUrl" value="/sesionExpirada" />
+		<property name="customInitSecutityConfig">
+			<bean id="secutityConfigFailureHandler" class="cl.aduana.seguridad.springsecurity.CustomInitSecutityConfig" />
+		</property>		
+	</bean>
+
+	<bean id="jaasAuthProviderInternal" class="cl.aduana.seguridad.springsecurity.providers.CustomDefaultJaasAuthenticationProvider">
+		<property name="configuration">
+			<bean class="org.springframework.security.authentication.jaas.memory.InMemoryConfiguration">
+				<constructor-arg>
+					<map>
+						<entry key="SPRINGSECURITY">
+							<array>
+								<bean class="javax.security.auth.login.AppConfigurationEntry">
+									<constructor-arg value="cl.aduana.seguridad.jaas.CustomLogin" />
+									<constructor-arg>
+										<util:constant static-field="javax.security.auth.login.AppConfigurationEntry$LoginModuleControlFlag.REQUIRED" />
+									</constructor-arg>
+									<constructor-arg>
+										<map></map>
+									</constructor-arg>
+								</bean>
+							</array>
+						</entry>
+					</map>
+				</constructor-arg>
+			</bean>
+		</property>
+		
+		<property name="authorityGranters">
+			<list>
+				<bean class="cl.aduana.seguridad.jaas.RoleGranter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
+	  

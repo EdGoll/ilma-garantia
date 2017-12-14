@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+<!-- COMPONENTE DE SEGURIDAD:  Archivo personalizable según aplicación -->
+
+	<bean id="initConfig" name="initConfig"  class="cl.aduana.seguridad.springsecurity.CustomInitSecutityConfig">
+		<!-- Referencia $JBOSS_EAP_6.X_HOME/standalone/configuration/standalone.xml  -->
+		<!-- /subsystem xmlns="urn:jboss:domain:security:1.2"/security-domains -->
+		<!-- IMPORTANTE: En caso de que no se encuentre el nombre del security domain se usa "other" -->
+		
+		<!-- Referencia security domain para usuario INTERNO -->
+		<property name="jaasRealmIntUser" value="aduana" />
+		<!-- Referencia security domain para usuario EXTERNO -->
+		<property name="jaasRealmExtUser" value="global" />
+		<property name="jaasRoles" value="Roles" />
+		
+		<!-- Esta propiedad se debe personalizar para la aplicacion -->
+		<property name="webContextName" value="control-garantia" />
+	</bean>	
+
+	<sec:http auto-config="false" use-expressions="true" disable-url-rewriting="true" entry-point-ref="loginUrlAuthenticationEntryPoint">		
+		<sec:intercept-url pattern="/web/pages/public/**" access="permitAll" />
+		<sec:intercept-url pattern="/rest/example/**" access="permitAll" />
+		<sec:intercept-url pattern="/web/pages/app/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/principal*" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/principal/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/web/pages/layout/**" access="isAuthenticated()"/>
+		<sec:intercept-url pattern="/web/pages/app/listasGloTrazaNotificaciones.jsf" access="hasAnyRole('Fiscalizador','Usuario','Funcionario')" />
+		<sec:access-denied-handler error-page="/web/pages/public/accessDenied.jsf" />		
+		<sec:custom-filter position="FORM_LOGIN_FILTER" ref="customFormLoginFilter" />
+		<sec:logout invalidate-session="true" success-handler-ref="customUrlLogoutSuccessHandler" delete-cookies="JSESSIONID" />
+		
+	</sec:http>
+
+</beans>
+	  
